@@ -5,7 +5,71 @@
 
     {% include 'partials/_menu.html' %}
 
-        <h1>Teste</h1>
+        <!--Banner START-->
+            <div class='banner' id="main_banner">
+                <div id="fade">
+                    <div class='unit'>
+                        <img class="img_banner" id="img_banner_id" src="{% static 'images/casa2.jpg' %}">
+                        <p id='text_banner'>Encontre aqui sua nova casa!"</p>
+                    </div>
+                    <div>
+                        <img class="img_banner" id="img_banner_id" src="{% static 'images/casa4.jpg' %}">
+                        <p id='text_banner'>Encontre aqui sua nova casa!2"</p>
+                    </div>
+                    <div>
+                        <img class="img_banner" id="img_banner_id" src="{% static 'images/casa3.jpg' %}">
+                        <p id='text_banner'>Encontre aqui sua nova casa!3"</p>
+                    </div>
+
+                    
+                </div>
+            </div>
+        <!--Banner END-->
+
+
+        <!-- MAIN CONTENT START-->    
+        <div class="main_content">
+
+            <!-- Busca START -->
+                <div class='busca_container'>
+                    <h2>ENCONTRE UM IMÓVEL</h2>
+                    <div class="form_busca_div">
+                        <form action="" method="" id="form_busca">
+                            
+                            <label for="tipo_negocio">Imóvel para</label>
+                            <select class='form_checkbox_index' id="tipo_negocio" name="tipo_negocio">
+                                <option value="comprar">Comprar</option>
+                                <option value="alugar">Alugar</option>
+                            </select>
+
+                            
+                        </form>
+                    </div>
+                </div>
+            <!-- Busca END -->
+
+
+
+            <!-- Casas em Destaque START -->
+
+
+            <!-- Casas em Destaque END -->
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+            <script src='{% static "script/cycle.js" %}'></script>
+            <script>
+                $(document).ready(function(){
+                    $('#fade').cycle()
+                    speed:    300
+                    timeout:  5000
+                    cleartypeNoBg: true
+                });
+                
+                
+            </script>
+
+        </div>
+        <!-- MAIN CONTENT END--> 
 
     {% include 'partials/_footer.html' %}
     

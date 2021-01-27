@@ -28,6 +28,7 @@ header{
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-bottom: 10px;
 
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.295);
 }
@@ -93,3 +94,88 @@ footer{
     width: 100%;
     height: 80px;
 }
+
+
+/* INDEX STYLE */
+.banner{
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background-color: #572323;
+}
+
+.img_banner{
+    width: 100%;
+    height: 250px;
+    object-fit: none;
+    object-position: 50% 65%;
+}
+
+#text_banner{
+    position: absolute;
+    bottom: 0px;
+    right: 100px;
+    padding: 10px;
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 55px;
+    color: white;
+    text-shadow: 5px 5px 5px black;
+}
+
+/* MAIN CONTENT */
+.main_content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* BUSCA INDEX */
+.busca_container{
+    width: 90%;
+    height: 200px;
+
+    border-radius: 20px;
+    margin: 15px;
+    padding: 20px;
+    box-sizing: border-box;
+
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.342);
+
+    background-color: rgba(255, 255, 255, 0.514);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.busca_container h2{
+    font-family: 'Roboto', sans-serif;
+    color: rgb(39, 39, 39);
+    margin-bottom: 10px;
+
+}
+
+.form_busca_div{
+    width: 100%;
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-weight: 500;
+
+    text-align: center;
+
+}
+
+.form_checkbox_index{
+    width: 20%;
+    height: 30px;
+    font-family:'Roboto', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    color: rgb(41, 41, 41);
+}
+
