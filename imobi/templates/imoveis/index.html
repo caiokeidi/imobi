@@ -32,16 +32,75 @@
 
             <!-- Busca START -->
                 <div class='busca_container'>
-                    <h2>ENCONTRE UM IMÓVEL</h2>
+                    <h2>ENCONTRE A CASA DOS SEUS SONHOS!</h2>
                     <div class="form_busca_div">
-                        <form action="" method="" id="form_busca">
-                            
-                            <label for="tipo_negocio">Imóvel para</label>
-                            <select class='form_checkbox_index' id="tipo_negocio" name="tipo_negocio">
-                                <option value="comprar">Comprar</option>
-                                <option value="alugar">Alugar</option>
-                            </select>
+                        <form action=" " method="POST" id="form_busca">
+                            <div class="form_format">
+                                <div class="form_row">
 
+                                    <div class="form_field">
+                                        <label for="tipo_negocio">Imóvel para</label>
+                                        <select class='form_checkbox_index' id="tipo_negocio" name="tipo_negocio">
+                                            <option value="comprar">Comprar</option>
+                                            <option value="alugar">Alugar</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="form_field">
+                                        <label for="cidade">Cidade</label>
+                                        <select class='form_checkbox_index' id="cidade" name="cidade">
+                                            <option value="comprar">Casa</option>
+                                            <option value="alugar">Apartamento</option>
+                                            <option value="alugar">Comercial</option>
+                                        </select>
+                                    </div>
+    
+                                    <div class="form_field">
+                                        <label for="bairro">Bairro</label>
+                                        <select class='form_checkbox_index' id="bairro" name="bairro">
+                                            <option value="comprar">Casa</option>
+                                            <option value="alugar">Apartamento</option>
+                                            <option value="alugar">Comercial</option>
+                                        </select>
+                                    </div>
+                                
+                                </div>
+    
+                                <div class="form_row">
+    
+                                    <div class="form_field">
+                                        <label for="tipo_imovel">Tipo de Imóvel</label>
+                                        <select class='form_checkbox_index' id="tipo_imovel" name="tipo_imovel">
+                                            <option value="comprar">Casa</option>
+                                            <option value="alugar">Apartamento</option>
+                                            <option value="alugar">Comercial</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="form_field">
+                                        <label for="valor_min">Valor Mínimo</label>
+                                        <input type="number" class="form_field_num" id="valor_min" name="valor_min" placeholder="Valor Mínimo (R$)">
+                                    </div>
+
+                                    <div class="form_field">
+                                        <label for="valor_max">Valor Máximo</label>
+                                        <input type="number" class="form_field_num" id="valor_max" name="valor_max" placeholder="Valor Máximo (R$)">
+                                    </div>
+                                
+                                </div>
+                            
+                                <div class="form_row">
+    
+                                    <div class="form_field">
+                                        <input class="submit_button" type="submit" placeholder="ENVIAR">
+                                    </div>
+                                
+                                </div>
+                                    
+                                    
+                            
+                            </div>
+                            
                             
                         </form>
                     </div>
@@ -65,6 +124,7 @@
                     cleartypeNoBg: true
                 });
                 
+                //FAZER ATUALIZAÇÃO DO BAIRROS
                 
             </script>
 

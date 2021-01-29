@@ -1,0 +1,11 @@
+.main_content_box{
+    width: 90%;
+    min-height: 200px;
+    padding: 10px;
+
+    background-color:rgba(255, 255, 255, 0.514);
+    text-align: center;
+
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.24);
+}
