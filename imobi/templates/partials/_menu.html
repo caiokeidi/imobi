@@ -7,18 +7,29 @@
             <div id="imobi">IMOBI</div>
             <div id="sub_imobi">sua imobiliária</div>
         </div>
-        <nav class='navbar item_header'>
-            <ul>
-                <li class="navbuttom"><a href="#"> Página Inicial</a></li>
-                <li class="navbuttom"><a href="#"> Imóveis</a></li>
-                <li class="navbuttom"><a href="#"> Serviços</a></li>
-                <li class="navbuttom"><a href="#"> Sobre</a></li>
-                <li class="navbuttom"><a href="#"> Contato</a></li>
-            </ul>
-        </nav>
-        <div class="search_btm item_header">
-            <i class="fa fa-search"></i>
-        </div>
+        <label class="btn_menu_responsive" for="bt_menu" onclick="open_menu()">&#9776;</label>
+        <ul class='navigation item_header menu_responsive_closed' id="navigation">    
+
+            <li class="navbuttom"><a href="/"> Página Inicial</a></li>
+            <li class="navbuttom"><a href="#"> Imóveis</a></li>
+            <li class="navbuttom"><a href="imobiliaria/servicos"> Serviços</a></li>
+            <li class="navbuttom"><a href="#"> Sobre</a></li>
+            <li class="navbuttom"><a href="#"> Contato</a></li>
+
+        </ul>
     </div>
 </header>
 <!-- HEADER END -->
+
+<script>
+    function open_menu(){
+        navigation = document.getElementById('navigation');
+        if(navigation.classList.contains('menu_responsive_closed')){
+            navigation.classList.remove('menu_responsive_closed');
+            navigation.classList.add('menu_responsive_open');
+        }else{
+            navigation.classList.remove('menu_responsive_open');
+            navigation.classList.add('menu_responsive_closed');
+        }
+    }
+</script>
