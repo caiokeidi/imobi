@@ -68,8 +68,11 @@ WSGI_APPLICATION = 'imobi.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'imobi',
+        'USER' : 'postgres',
+        'PASSWORD': str(os.getenv('PASSWORD_POSTGRES')),
+        'HOST' : 'localhost'
     }
 }
 

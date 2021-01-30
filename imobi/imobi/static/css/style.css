@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none;
+    color: black;
 }
 
 /*  Cores compostas.
@@ -247,7 +249,95 @@ footer{
     
 }
 
+/* CASAS DESTAQUE INDEX */
+.casas_destaque{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 
+    width: 100%;
+    padding: 20px;
+}
+
+.casa_destaque{
+    padding: 15px;
+    margin: 15px;
+
+    /* Defino que ele tem que ocupar um espaço na linha igual a todos os outros elementos, com 30% de tamanho */
+    flex: 1 0 30%; 
+        
+    max-width: 30%;
+    min-width: 300px;
+    
+    background-color: #8a442975;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.356);
+
+    display: block;
+    /*flex-direction: column;
+    justify-content: center;
+    align-items: center; */
+
+    font-size: 17px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 300;
+}
+
+.cd_linha{
+    padding: 3px;
+}
+
+.casa_destaque_img{
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+
+    object-fit: cover;
+}
+
+.casa_destaque_bairro{
+    font-size: 25px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.658);
+}
+
+.casa_destaque_negocio{
+    font-weight: 700;
+}
+
+.casa_destaque_valor{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.casa_destaque_btn{
+    background-color: #416341;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 700;
+    margin: auto;
+
+    text-decoration: none;
+}
+
+.btn_area{
+    display:flex;
+    justify-content: center;
+}
+
+@keyframes hover_destaque{
+    0%{
+        box-shadow: 10px 10px 15px rgba(110, 110, 110, 0.801);
+    }
+}
+
+.casa_destaque:hover{
+    animation-name: hover_destaque;
+    animation-duration: 600ms;
+    animation-fill-mode: forwards;
+}
 
 /*
 

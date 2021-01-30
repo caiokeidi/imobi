@@ -1,6 +1,15 @@
 from django.shortcuts import render
+from .models import Imoveis, imagens
 
 def index(request):
-    return render(request, 'imoveis/index.html')
+
+    imoveis = Imoveis.objects.all()
+
+    dados={
+        'imoveis': imoveis
+    }
+    
+
+    return render(request, 'imoveis/index.html', dados)
 
 
