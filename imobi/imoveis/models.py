@@ -22,6 +22,7 @@ class Imoveis(models.Model):
     vagas = models.IntegerField()
     andar = models.IntegerField(blank=True, null=True)
     metro_proximo = models.BooleanField(default=False)
+    mobiliado = models.BooleanField(default=False) 
 
     descricao = models.TextField(max_length=1500)
 

@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+
+        <div class="container">
+            <h1> {{ imovel.bairro }} - {{ imovel.cidade }}</h1>
+            <div class="imovel_fotos">
+                <img class="foto_provisoria" src="{% static 'images/casa7.jpg' %}">
+            </div>
+            <h2 class="tipo_negocio_imovel"> {{ imovel.tipo_negocio }} de {{ imovel.tipo_imovel }}</h2>
+            <div class="info_principais">
+                <p><b>Quartos: </b>{{ imovel.quartos }} 
+                    {% if imovel.suites >= 1 %}
+                        (Suítes: {{ imovel.suites }} )
+                    {% endif %}
+                </p>
+
+                <p><b>Banheiros: </b>{{ imovel.banheiros }}</p>
+
+                <p><b>Vagas: </b>{{ imovel.vagas }}</p>
+
+                <p><b>Mobiliado: </b>
+                    {% if imovel.mobiliado%}
+                        Sim
+                    {% else %}
+                        Não
+                    {% endif %}
+                </p>
+
+                <p><b>Área útil:</b> {{ imovel.area }}m²</p>
+
+                <p><b>Próximo do Metrô: </b>
+                    {% if imovel.metro_proximo %}
+                        Sim
+                    {% else %}
+                        Não
+                    {% endif %}
+                </p>
+
+                {% if imovel.andar %}
+                    <p><b>Andar:</b> {{ imovel.andar }}</p>
+                {% endif %}
+            </div>
+
+            <div class="preco_imovel_box">
+                {% if imovel.valor_venda %}
+                    <div class="preco_imovel_row">
+                        <p>Venda: </p>
+                        <p class="preco_imovel">{{ imovel.valor_venda }}</p>
+                    </div>
+                {% endif %}
+                {% if imovel.valor_aluguel %}
+                    <div class="preco_imovel_row">
+                        <p>Aluguel: </p>
+                        <p class="preco_imovel">{{ imovel.valor_aluguel }}</p>
+                    </div>
+                {% endif %}
+                {% if imovel.valor_iptu %}
+                    <div class="preco_imovel_row row2">
+                        <p>IPTU (Mensal): </p>
+                        <p class="preco_imovel iptu_condominio">{{ imovel.valor_iptu }}</p>
+                    </div>
+                {% endif %}
+                {% if imovel.valor_condominio %}
+                    <div class="preco_imovel_row row2">
+                        <p>Condomínio: </p>
+                        <p class="preco_imovel iptu_condominio">{{ imovel.valor_condominio }}</p>
+                    </div>
+                {% endif %}
+            </div>
+    
+
+            
+
+        </div>
+
+
+        <script>
+            //Formatação de Preços:
+            //REFATORAR O CÓDIGO REPETIDO AQUI.
+
+            document.addEventListener("DOMContentLoaded", function(event) {
+                let valoresAlugueis = document.getElementsByClassName('preco_imovel');
+
+                if(valoresAlugueis.length > 0){
+                    for(n in valoresAlugueis){
+                        valor = valoresAlugueis[n]
+                        let formatValor = valor.innerText;
+                        var formatado = formatar_precos(formatValor)
+                        valor.innerText = 'R$ ' + formatado + ',00'
+                    }
+                }
+
+                if(valoresVendas.length > 0){
+                    for(n in valoresVendas){
+                        valor = valoresVendas[n]
+                        let formatValor = valor.innerText;
+                        var formatado = formatar_precos(formatValor)
+                        valor.innerText = 'R$ ' + formatado + ',00'
+                    }
+                }
+
+
+                /*
+                let valor = document.getElementById('valorAluguel').innerText;
+                var formatado = formatar_precos(valor)
+                document.getElementById('valorAluguel').innerText = 'R$ ' + formatado + ',00'
+
+                let valorVenda = document.getElementById('valorVenda').innerText;
+                var formatado = formatar_precos(valorVenda)
+                document.getElementById('valorVenda').innerText = 'R$ ' + formatado + ',00'
+                */
+            });
+
+
+            function formatar_precos(valor){
+
+                if(valor != undefined){
+                    let valorstring = valor.toString();
+
+                    if(valorstring.includes(',')){
+                        valorstring = valorstring.slice(0, -2)
+                    }
+
+                    if(valorstring.length <= 3){
+                        return valorstring;
+                    }else{
+                        valorArray = toArray(valorstring)
+                        if(valorArray.length > 3){
+                            for(pos = valorArray.length - 3; pos > 0; pos -= 3){
+                                valorArray.splice(pos, 0, '.');
+                            }
+                            return(valorArray.toString().replace(/,/gi, ''))
+                        }else{
+                            return(valorArray.toString().replace(/,/gi, ''))
+                        }
+
+                    }
+                }
+                
+            }
+
+            function toArray(string){
+                array = []
+                for(l in string){
+                    array.push(string[l])
+                }
+                return array;
+            }
+        </script>
+
+    
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
