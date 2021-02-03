@@ -471,6 +471,30 @@ footer{
         display: flex;
         justify-content: center;
     }
-    
 
+    /* RESPONSIVIDADE FOOTER */
+    footer{
+
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: rgb(180, 180, 180);
+        height: auto;
+    }
+    
+    .Logo_Footer{
+        width: 80%;
+        padding-right: 0px;
+        border-right: 0px solid white;
+    }
+
+    .redes_sociais{
+        display: block;
+        width: 80%;
+        margin: 0;
+        text-align: center;
+    }
+    
 }
