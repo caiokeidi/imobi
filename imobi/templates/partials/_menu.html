@@ -3,17 +3,17 @@
  <!-- HEADER START -->
  <header>
     <div class="mainheader">
-        <div class="logo item_header">
+        <a class="logo item_header" href="{% url 'index' %}">
             <div id="imobi">IMOBI</div>
             <div id="sub_imobi">sua imobiliária</div>
-        </div>
+        </a>
         <label class="btn_menu_responsive" for="bt_menu" onclick="open_menu()">&#9776;</label>
         <ul class='navigation item_header menu_responsive_closed' id="navigation">    
 
-            <li class="navbuttom"><a href="/"> Página Inicial</a></li>
+            <li class="navbuttom"><a href="{% url 'index' %}"> Página Inicial</a></li>
             <li class="navbuttom"><a href="#"> Imóveis</a></li>
-            <li class="navbuttom"><a href="imobiliaria/servicos"> Serviços</a></li>
-            <li class="navbuttom"><a href="#"> Sobre</a></li>
+            <li class="navbuttom"><a href="{% url 'servicos' %}"> Serviços</a></li>
+            <li class="navbuttom"><a href="{% url 'sobre' %}"> Sobre</a></li>
             <li class="navbuttom"><a href="#"> Contato</a></li>
 
         </ul>

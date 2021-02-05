@@ -39,7 +39,7 @@ def busca(request):
             valor_min = 0
         if valor_max == '':
             valor_max = 10000000
-    
+
         if tipo_negocio == 'Aluguel':
             imoveis_buscados = Imoveis.objects.filter(tipo_negocio=tipo_negocio, cidade=cidade,
                                 bairro = bairro, tipo_imovel=tipo_imovel, valor_aluguel__lte = valor_max, valor_aluguel__gte = valor_min)

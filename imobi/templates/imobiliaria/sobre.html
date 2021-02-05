@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+
+    <div class="main_content">
+
+        <div class="main_content_box">
+            <h1> Sobre </h1>
+            <div class="text_main_content_box">
+
+                <div class="image_content_box">
+                    <img src="{% static 'images/casa6.jpg' %}">
+                </div>
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quas minus architecto vel beatae 
+                    consequatur commodi repudiandae excepturi dolorem dolor optio error natus eius, tenetur quis totam 
+                    nostrum ea maiores. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, minima repellendus 
+                    illum quis nulla nesciunt ea quas molestiae dolorem explicabo repudiandae, quam ducimus nemo aut magnam 
+                    excepturi atque laudantium aperiam?
+                </p>
+
+                <ul>
+                    <li>Venda de Imóveis</li>
+                    <li>Aluguel de Imóveis</li>
+                    <li>Imóveis para temporada</li>
+                    <li>Regulamentação de Terrenos</li>
+                </ul>
+
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quas minus architecto vel beatae 
+                    consequatur commodi repudiandae excepturi dolorem dolor optio error natus eius, tenetur quis totam 
+                    nostrum ea maiores. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero, minima repellendus 
+                    illum quis nulla nesciunt ea quas molestiae dolorem explicabo repudiandae, quam ducimus nemo aut magnam 
+                    excepturi atque laudantium aperiam?
+                </p>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
+

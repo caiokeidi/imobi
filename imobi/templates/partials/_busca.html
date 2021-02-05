@@ -13,7 +13,6 @@
                         <label for="tipo_negocio">Imóvel para</label>
                         <select class='form_checkbox_index' id="tipo_negocio" name="tipo_negocio"
                         onchange="if (this.value) tipo_negocio_check(this.value)">
-                            <option value="Todos">Todos</option>
                             <option value="Venda">Comprar</option>
                             <option value="Aluguel">Alugar</option>
                         </select>
@@ -23,14 +22,13 @@
                         <label for="cidade">Cidade</label>
                         <select class='form_checkbox_index' id="cidade" name="cidade" 
                         onchange="if (this.value) cidade_check(this.value)">
-                            <option value="Todos">Todos</option>
                         </select>
                     </div>
 
                     <div class="form_field">
                         <label for="bairro">Bairro</label>
-                        <select class='form_checkbox_index' id="bairro" name="bairro">
-                            <option value="Todos">Todos</option>
+                        <select class='form_checkbox_index' id="bairro" name="bairro"
+                        onchange="if (this.value) bairro_check(this.value)">
                         </select>
                     </div>
                 
@@ -39,11 +37,9 @@
                 <div class="form_row">
 
                     <div class="form_field">
-                        <label for="tipo_imovel">Tipo de Imóvel</label>
+                        <label for="tipo_imovel" >Tipo de Imóvel</label>
                         <select class='form_checkbox_index' id="tipo_imovel" name="tipo_imovel">
-                            <option value="Casa / Padrão">Casa / Padrão</option>
-                            <option value="Apartamento">Apartamento</option>
-                            <option value="Comercial">Comercial</option>
+
                         </select>
                     </div>
 
@@ -80,7 +76,7 @@
     cidades_bairros = document.getElementById('cidade_bairro').innerHTML
     array_cb = JSON.parse(cidades_bairros)
 
-    console.log(array_cb)
+    tipo_negocio_check('Venda')
 
     function tipo_negocio_check(tipo_negocio){
         array_cidades = []
@@ -91,10 +87,18 @@
         })
 
         cidade_form = document.getElementById('cidade')
-        cidade_form.innerHTML = '<option value="Todos">Todos</option>'
+        cidade_form.innerHTML = ''
+
+        ciclo = 0
         array_cidades.forEach(cid => {
             cidade_form.innerHTML += `<option value="${cid}">${cid}</option>`
+            if(ciclo == 0){
+                cidade_check(cid)
+            }
+            ciclo++
         })
+
+
 
     }
     
@@ -108,10 +112,41 @@
         });
         
         bairro_form = document.getElementById('bairro')
-        bairro_form.innerHTML = '<option value="Todos">Todos</option>'
+        bairro_form.innerHTML = ''
+
+        ciclo = 0
         array_bairros.forEach(bairro => {
             bairro_form.innerHTML += `<option value="${bairro}">${bairro}</option>`
+            if(ciclo == 0){
+                bairro_check(bairro)
+            }
         })
 
     }
+
+    function bairro_check(bairro){
+        array_tipo_imovel = []
+
+        array_cb.forEach(element => {
+            if(element.bairro == bairro && !(array_tipo_imovel.includes(element.tipo_imovel))){
+                array_tipo_imovel.push(element.tipo_imovel)
+            }
+            if(bairro == 'Todos' && !(array_tipo_imovel.includes(element.tipo_imovel))){
+                array_tipo_imovel.push(element.tipo_imovel)
+            }
+        });
+        
+        tipo_imovel_form = document.getElementById('tipo_imovel')
+        tipo_imovel_form.innerHTML = ''
+
+        array_tipo_imovel.forEach(tipo_imovel => {
+            tipo_imovel_form.innerHTML += `<option value="${tipo_imovel}">${tipo_imovel}</option>`
+
+        })
+
+    }
+
+
+
+    
 </script>
