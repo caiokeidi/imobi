@@ -4,13 +4,16 @@
     <h2>ENCONTRE A CASA DOS SEUS SONHOS!</h2>
     <div class="form_busca_div">
         <form action="{% url 'busca' %}" method="POST" id="form_busca">
+            <div style="display:none" id='cidade_bairro'>{{ cidade_bairro }}</div>
             {% csrf_token %}
             <div class="form_format">
                 <div class="form_row">
 
                     <div class="form_field">
                         <label for="tipo_negocio">Imóvel para</label>
-                        <select class='form_checkbox_index' id="tipo_negocio" name="tipo_negocio">
+                        <select class='form_checkbox_index' id="tipo_negocio" name="tipo_negocio"
+                        onchange="if (this.value) tipo_negocio_check(this.value)">
+                            <option value="Todos">Todos</option>
                             <option value="Venda">Comprar</option>
                             <option value="Aluguel">Alugar</option>
                         </select>
@@ -18,19 +21,16 @@
                     
                     <div class="form_field">
                         <label for="cidade">Cidade</label>
-                        <select class='form_checkbox_index' id="cidade" name="cidade">
-                            <option value="Mogi das Cruzes">Mogi das Cruzes</option>
-                            <option value="Suzano">Suzano</option>
-                            <option value="Guararema">Guararema</option>
+                        <select class='form_checkbox_index' id="cidade" name="cidade" 
+                        onchange="if (this.value) cidade_check(this.value)">
+                            <option value="Todos">Todos</option>
                         </select>
                     </div>
 
                     <div class="form_field">
                         <label for="bairro">Bairro</label>
                         <select class='form_checkbox_index' id="bairro" name="bairro">
-                            <option value="Vila Costa">Vila Costa</option>
-                            <option value="Centro">Centro</option>
-                            <option value="Vila Oliveira">Vila Oliveira</option>
+                            <option value="Todos">Todos</option>
                         </select>
                     </div>
                 
@@ -75,3 +75,43 @@
         </form>
     </div>
 </div>
+
+<script>
+    cidades_bairros = document.getElementById('cidade_bairro').innerHTML
+    array_cb = JSON.parse(cidades_bairros)
+
+    console.log(array_cb)
+
+    function tipo_negocio_check(tipo_negocio){
+        array_cidades = []
+        array_cb.forEach(element => {
+            if(element.tipo_negocio == tipo_negocio && !(array_cidades.includes(element.cidade))){
+                array_cidades.push(element.cidade)
+            }
+        })
+
+        cidade_form = document.getElementById('cidade')
+        cidade_form.innerHTML = '<option value="Todos">Todos</option>'
+        array_cidades.forEach(cid => {
+            cidade_form.innerHTML += `<option value="${cid}">${cid}</option>`
+        })
+
+    }
+    
+    function cidade_check(cidade){
+        array_bairros = []
+
+        array_cb.forEach(element => {
+            if(element.cidade == cidade && !(array_bairros.includes(element.bairro))){
+                array_bairros.push(element.bairro)
+            }
+        });
+        
+        bairro_form = document.getElementById('bairro')
+        bairro_form.innerHTML = '<option value="Todos">Todos</option>'
+        array_bairros.forEach(bairro => {
+            bairro_form.innerHTML += `<option value="${bairro}">${bairro}</option>`
+        })
+
+    }
+</script>

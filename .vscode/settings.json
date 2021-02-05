@@ -4,7 +4,7 @@
         "--loadplugins=pylint_django"
 ],
 "python.testing.pytestArgs": [
-    "tests"
+    "imobi"
 ],
 "python.testing.unittestEnabled": false,
 "python.testing.nosetestsEnabled": false,

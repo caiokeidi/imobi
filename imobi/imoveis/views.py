@@ -1,13 +1,16 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.db.models import Count
 from .models import Imoveis, imagens
+import json
 
 def index(request):
-    print(cidade_bairro())
+    
     imoveis = Imoveis.objects.all()
+    cidade_bairro_JSON = json.dumps(cidade_bairro())
 
     dados={
-        'imoveis': imoveis
+        'imoveis': imoveis,
+        'cidade_bairro': cidade_bairro_JSON
     }
 
     return render(request, 'imoveis/index.html', dados)
@@ -37,16 +40,18 @@ def busca(request):
         if valor_max == '':
             valor_max = 10000000
     
-        if tipo_negocio == 'Alguel':
+        if tipo_negocio == 'Aluguel':
             imoveis_buscados = Imoveis.objects.filter(tipo_negocio=tipo_negocio, cidade=cidade,
                                 bairro = bairro, tipo_imovel=tipo_imovel, valor_aluguel__lte = valor_max, valor_aluguel__gte = valor_min)
         else:
             imoveis_buscados = Imoveis.objects.filter(tipo_negocio=tipo_negocio, cidade=cidade,
                                 bairro = bairro, tipo_imovel=tipo_imovel, valor_venda__lte = valor_max, valor_venda__gte = valor_min)
-    
+
+        cidade_bairro_JSON = json.dumps(cidade_bairro())
 
         dados={
-            'imoveis': imoveis_buscados
+            'imoveis': imoveis_buscados,
+            'cidade_bairro': cidade_bairro_JSON
         }
 
 
@@ -54,5 +59,9 @@ def busca(request):
 
 
 def cidade_bairro():
-    dict_cb = Imoveis.objects.values('bairro', 'cidade').annotate(dcount=Count('bairro'))
-    return dict_cb
+    dict_cb_query = Imoveis.objects.values('bairro', 'cidade', 'tipo_negocio', 'tipo_imovel').annotate(dcount=Count('bairro'))
+    array_cb = []
+    for cb in dict_cb_query:
+        array_cb.append(cb)
+    
+    return array_cb
