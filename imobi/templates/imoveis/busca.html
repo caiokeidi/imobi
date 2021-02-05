@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+    <div class="main_content">
+
+        <!-- BUSCA CONTAINER START -->
+            {% include 'partials/_busca.html' %}
+        <!-- BUSCA CONTAINER END-->
+
+        <!-- CASAS BUSCADAS START-->
+        <div class="casas_destaque">
+            {% if imoveis %}
+
+                {% for imovel in imoveis %}
+
+                    <a class="casa_destaque_link" href="/imovel/{{ imovel.id }}">
+                        <div class="casa_destaque">
+                            <img class='cd_linha casa_destaque_img' src="{% static 'images/casa1.jpg' %}">
+                            <div class="cd_linha casa_destaque_bairro">{{ imovel.bairro }} - {{imovel.cidade}}</div>
+                            <div class="cd_linha casa_destaque_negocio">{{ imovel.tipo_negocio }}</div>
+                            <div class="cd_linha casa_destaque_caracteristicas">Quartos: {{ imovel.quartos }} - Banheiros: {{ imovel.banheiros }}</div>
+                            
+                            {% if imovel.tipo_negocio == 'Aluguel' %}
+                                <div class="valorAluguel cd_linha casa_destaque_valor">{{ imovel.valor_aluguel }}</div>
+                            {% else %}
+                                <div class="valorVendas cd_linha casa_destaque_valor">{{ imovel.valor_venda }}</div>
+                            {% endif %}
+                    
+                            <div class="cd_linha btn_area">
+                                <a class="cd_linha casa_destaque_btn" href="/">
+                                    Sobre
+                                <a>
+                            </div>
+                            
+                        </div>
+                    </a>
+
+                {% endfor %}
+
+            {% else %}
+                    <h2>Não foram encontrados imóveis com esses filtros de busca.</h2>
+            {% endif %}
+        <!-- CASAS BUSCADAS END-->
+    
+        </div>
+
+
+        <script>
+            //Formatação de Preços:
+
+            document.addEventListener("DOMContentLoaded", function(event) {
+                let valoresAlugueis = document.getElementsByClassName('valorAluguel');
+                let valoresVendas = document.getElementsByClassName('valorVendas');
+
+                if(valoresAlugueis.length > 0){
+                    for(n in valoresAlugueis){
+                        valor = valoresAlugueis[n]
+                        let formatValor = valor.innerText;
+                        var formatado = formatar_precos(formatValor)
+                        valor.innerText = 'R$ ' + formatado + ',00 / Mês'
+                    }
+                }
+
+                if(valoresVendas.length > 0){
+                    for(n in valoresVendas){
+                        valor = valoresVendas[n]
+                        let formatValor = valor.innerText;
+                        var formatado = formatar_precos(formatValor)
+                        valor.innerText = 'R$ ' + formatado + ',00'
+                    }
+                }
+
+
+                /*
+                let valor = document.getElementById('valorAluguel').innerText;
+                var formatado = formatar_precos(valor)
+                document.getElementById('valorAluguel').innerText = 'R$ ' + formatado + ',00'
+
+                let valorVenda = document.getElementById('valorVenda').innerText;
+                var formatado = formatar_precos(valorVenda)
+                document.getElementById('valorVenda').innerText = 'R$ ' + formatado + ',00'
+                */
+            });
+
+
+            function formatar_precos(valor){
+
+                if(valor != undefined){
+                    let valorstring = valor.toString();
+
+                    if(valorstring.includes(',')){
+                        valorstring = valorstring.slice(0, -2)
+                    }
+
+                    if(valorstring.length <= 3){
+                        return valorstring;
+                    }else{
+                        valorArray = toArray(valorstring)
+                        if(valorArray.length > 3){
+                            for(pos = valorArray.length - 3; pos > 0; pos -= 3){
+                                valorArray.splice(pos, 0, '.');
+                            }
+                            return(valorArray.toString().replace(/,/gi, ''))
+                        }else{
+                            return(valorArray.toString().replace(/,/gi, ''))
+                        }
+
+                    }
+                }
+                
+            }
+
+            function toArray(string){
+                array = []
+                for(l in string){
+                    array.push(string[l])
+                }
+                return array;
+            }
+
+            $(document).ready(function(){
+                $('#fade').cycle()
+                speed:    300
+                timeout:  5000
+                cleartypeNoBg: true
+            });
+            
+            //FAZER ATUALIZAÇÃO DO BAIRROS
+            
+        </script>
+    
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
