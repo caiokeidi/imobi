@@ -83,3 +83,31 @@ ul{
     text-align: start;
     font-weight: 700;
 }
+
+@media (max-width: 900px){
+
+    .info_contatos_container{
+        max-width: 120%;
+        padding: 20px;
+
+    }
+    .info_contatos_p {
+        font-family: 'Roboto';
+        font-size: 15px;
+        color:white;
+        font-weight: 600;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    ul{
+        margin-left: 10px;
+    }
+
+    .main_content_box ul li{
+        text-indent: 20px;
+    }
+
+}
