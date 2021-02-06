@@ -22,8 +22,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'imobiliaria',
-    'imoveis',
+    'apps.imobiliaria',
+    'apps.imoveis',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

@@ -1,4 +1,4 @@
-from imoveis.views import index
+from apps.imoveis.views import index
 
 def teste_200_index(rf, db):
     request = rf.get('')

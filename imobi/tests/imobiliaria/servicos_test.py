@@ -1,4 +1,4 @@
-from imobiliaria.views import servicos
+from apps.imobiliaria.views import servicos
 
 def teste_200_imobiliaria_servicos(rf, db):
     request = rf.get('/imobiliaria/servicos')

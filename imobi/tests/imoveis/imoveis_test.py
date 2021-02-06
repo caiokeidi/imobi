@@ -1,4 +1,4 @@
-from imoveis.views import imovel, index
+from apps.imoveis.views import imovel, index
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.urls import reverse

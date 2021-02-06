@@ -6,7 +6,7 @@ import json
 
 def index(request):
     
-    imoveis = Imoveis.objects.all()
+    imoveis = Imoveis.objects.all().order_by("id") ##Precisei colocar parar parar o erro do pytest
     cidade_bairro_JSON = json.dumps(cidade_bairro())
 
     paginator = Paginator(imoveis, 3)
