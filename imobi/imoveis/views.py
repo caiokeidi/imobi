@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_list_or_404, get_object_or_404
 from django.db.models import Count
 from .models import Imoveis, imagens
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
 
 def index(request):
@@ -8,8 +9,12 @@ def index(request):
     imoveis = Imoveis.objects.all()
     cidade_bairro_JSON = json.dumps(cidade_bairro())
 
+    paginator = Paginator(imoveis, 3)
+    page = request.GET.get('page')
+    imoveis_por_pagina = paginator.get_page(page)
+
     dados={
-        'imoveis': imoveis,
+        'imoveis': imoveis_por_pagina,
         'cidade_bairro': cidade_bairro_JSON
     }
 

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+
+    <div class="main_content">
+
+        <div class="main_content_box">
+            <h1> Contato </h1>
+            <div class="text_main_content_box">
+                <p>
+                    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vitae quas minus architecto vel beatae 
+                    consequatur commodi repudiandae excepturi dolorem dolor optio error natus eius.
+                </p>
+                <div class="info_contatos_container">
+
+                    <div class="info_contatos_row">
+                        <img class='info_contatos_img' src="{% static 'images/icons/email.png' %}">
+                        <p class='info_contatos_p'>vendas@imobi.com</p>
+                    </div>
+
+                    <div class="info_contatos_row">
+                        <img class='info_contatos_img' src="{% static 'images/icons/insta.png' %}">
+                        <p class='info_contatos_p'>@imobi</p>
+                    </div>
+
+                    <div class="info_contatos_row">
+                        <img class='info_contatos_img' src="{% static 'images/icons/face.png' %}">
+                        <p class='info_contatos_p'>/imobi_imobiliaria</p>
+                    </div>
+
+                    <div class="info_contatos_row">
+                        <img class='info_contatos_img' src="{% static 'images/icons/whatsapp.png' %}">
+                        <p class='info_contatos_p'>(11)99999-9999</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
+

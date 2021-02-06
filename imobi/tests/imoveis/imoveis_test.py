@@ -41,3 +41,4 @@ def teste_verifica_se_traz_imovel_correto(db):
     verification = b'Mogi das Cruzes'
 
     assert verification in object.content
+

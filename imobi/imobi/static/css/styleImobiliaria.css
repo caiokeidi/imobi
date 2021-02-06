@@ -26,6 +26,11 @@ h1{
     font-size: 20px;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 ul{
@@ -44,4 +49,37 @@ ul{
     object-position: 50% 45%;
     border-radius: 15px;
     margin: 15px 0px 25px 0px
+}
+
+
+
+/*  CONTATO  */
+.info_contatos_container{
+    max-width: 500px;
+    background-color: rgba(223, 139, 139, 0.514);
+    padding: 40px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.info_contatos_row{
+    width: 100%;
+    display: flex;
+    margin: 10px 0px 10px 0px
+}
+
+.info_contatos_img {
+    width: 50px;
+}
+
+.info_contatos_p {
+    font-family: 'Roboto';
+    font-size: 30px;
+    color:white;
+    text-align: start;
+    font-weight: 700;
 }

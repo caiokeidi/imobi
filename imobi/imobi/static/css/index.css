@@ -4,3 +4,45 @@
     height: 150px;
     background-color: green;
 }
+
+
+.pagination{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 10px 0px 30px 0px;
+}
+
+.pagination_ul{
+    list-style: none;
+    margin: 0;
+}
+
+.pagination_ul li{
+    text-decoration: none;
+    list-style: none;
+    display: inline;
+}
+
+
+.page-link{
+    font-size: 20px;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    padding: 0px 5px 0px 5px; 
+
+    text-shadow: 5px 5px 5px rgba(0, 0, 0, 0.24);
+}
+
+.normal{
+    color: white;
+}
+
+.active{
+    color: rgb(248, 205, 205);
+}
+
+.disabled{
+    color: rgb(231, 231, 231);
+    text-shadow: none;
+}

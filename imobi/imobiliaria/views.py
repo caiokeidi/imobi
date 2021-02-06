@@ -5,3 +5,6 @@ def servicos(request):
 
 def sobre(request):
     return render(request, 'imobiliaria/sobre.html')
+
+def contato(request):
+    return render(request, 'imobiliaria/contato.html')
