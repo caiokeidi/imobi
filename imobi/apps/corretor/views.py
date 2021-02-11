@@ -36,3 +36,8 @@ def logout(request):
     auth.logout(request)
     return redirect('index')
 
+def dashboard(request):
+    if request.user.is_authenticated:
+        return render(request, 'corretor/dashboard.html')
+    else:
+        return redirect('login')

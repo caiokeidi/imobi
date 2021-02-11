@@ -24,3 +24,119 @@
     padding: 5px;
     margin: 5px;
 }
+
+
+
+.base_dashboard{
+    background-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+    width: 70%;
+    height: auto;
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card_dashboard{
+    background-color: var(--branco_75);
+    text-indent: 0;
+    width: 30%;
+    height: 200px;
+    padding: 40px 10px 40px 10px;
+    flex-wrap: wrap;
+
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+
+    border: none;
+    border-radius: 10px;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btm_logout{
+    width: 30%;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);
+
+    background-color: var(--verde_escuro);
+    color: var(--branco_75);
+
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    text-indent: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes btm_hover{
+    0%{box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);}
+    100%{box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.158)}
+}
+@keyframes btm_not_hover{
+    0%{box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.158)}
+    100%{box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.342);}
+    
+}
+@keyframes btm_active{
+    0%{box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.158)}
+    100%{box-shadow: 5px 5px -10px rgba(0, 0, 0, 0.342);}
+    
+}
+
+.btm{
+    animation-name: btm_not_hover;
+    animation-fill-mode: both;
+    animation-duration: 300ms;
+}
+
+.btm:hover{
+    animation-name: btm_hover;
+    animation-fill-mode: both;
+    animation-duration: 300ms;
+}
+
+.btm:active{
+    animation-name: btm_active;
+    animation-fill-mode: both;
+    animation-duration: 300ms;
+}
+
+
+@media (max-width: 900px){
+    
+    .base_dashboard{
+        width: 80%;
+        flex-direction: column;
+    }
+
+    .card_dashboard{
+        margin-top: 20px;
+        width: 70%;
+        height: 100px;
+        padding: 10px 10px 10px 10px;
+    
+        font-size: 15px;
+    
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+
+}

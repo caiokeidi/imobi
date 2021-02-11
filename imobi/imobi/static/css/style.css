@@ -1,3 +1,14 @@
+
+:root{
+    --marrom: #8A4529;
+    --bege_escuro: #BDA297;
+    --marrom_escuro: #572323;
+    --verde_escuro: #416341;
+    --verde: #4B8A29;
+    --cinza_claro: rgb(180, 180, 180);
+    --branco_75: #ffffffcb;
+}
+
 *{
     margin: 0;
     padding: 0;

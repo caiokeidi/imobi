@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+
+    <div class="main_content">
+
+        <div class="main_content_box">
+            <h1> DASHBOARD - Bem vindo {{ user.username }} </h1>
+            <div class="text_main_content_box">
+                <div class="base_dashboard">
+                    <a href="" class="card_dashboard btm">CADASTRAR IMÓVEL</a>
+                    <a href="" class="card_dashboard btm">EDITAR IMÓVEIS</a>
+                </div>
+                <a class="btm_logout btm" href="{% url 'logout' %}">LOGOUT</a>
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
+
