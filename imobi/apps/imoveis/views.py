@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404
+from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
 from django.db.models import Count
+from django.contrib.auth.models import User
 from .models import Imoveis, imagens
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
@@ -62,6 +63,11 @@ def busca(request):
 
     return render(request, 'imoveis/busca.html', dados)
 
+def cadastro_imoveis(request):
+    if request.user.is_authenticated:
+        return render(request, 'imoveis/cadastro.html')   
+    else:
+        return redirect('login')
 
 def cidade_bairro():
     dict_cb_query = Imoveis.objects.values('bairro', 'cidade', 'tipo_negocio', 'tipo_imovel').annotate(dcount=Count('bairro'))
@@ -70,3 +76,4 @@ def cidade_bairro():
         array_cb.append(cb)
     
     return array_cb
+

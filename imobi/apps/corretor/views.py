@@ -20,7 +20,7 @@ def login(request):
             if user is not None:
                 auth.login(request, user)
                 print(f'Usuário {user} logado')
-                return redirect('index')
+                return redirect('dashboard')
 
             else:
                 print('Senha ou Usuário Incorreto')
