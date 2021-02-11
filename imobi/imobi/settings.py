@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'apps.corretor',
     'apps.imobiliaria',
     'apps.imoveis',
     'django.contrib.admin',

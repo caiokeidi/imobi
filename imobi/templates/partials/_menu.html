@@ -11,6 +11,10 @@
         <ul class='navigation item_header menu_responsive_closed' id="navigation">    
 
             <li class="navbuttom"><a href="{% url 'index' %}"> Página Inicial</a></li>
+            {% if user.is_authenticated %}
+                <li class="navbuttom"><a href="{% url 'logout' %}"> Logout</a></li>
+                <li class="navbuttom"><a href=""> Novo Imóvel</a></li>
+            {% endif %}
             <li class="navbuttom"><a href="{% url 'servicos' %}"> Serviços</a></li>
             <li class="navbuttom"><a href="{% url 'sobre' %}"> Sobre</a></li>
             <li class="navbuttom"><a href="{% url 'contato' %}"> Contato</a></li>

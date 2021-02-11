@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+
+    <div class="main_content">
+
+        <div class="main_content_box">
+            <h1> Login </h1>
+            <div class="text_main_content_box">
+                <p>
+                    Espaço destinado apenas aos corretores e funcionários da Imobi Imobiliária, insira seus
+                    dados de usuário e senha abaixo.
+                </p>
+
+                    <div class="login-form-div">
+                        <form action="{% url 'login' %}" method="POST" class="login-form">
+                            {% csrf_token %}
+                            <input type="text" name="usuario" class="usuario-form" placeholder="USUÁRIO">
+                            <input type="password" name="senha" class="senha-form" placeholder="SENHA">
+                            <input type="submit">
+                        </form>
+                    </div>
+                
+                    <p>
+                        Em caso de problemas para efetuar o login, contate o seu superior.
+                    </p>
+
+            </div>
+
+                
+            </div>
+        </div>
+
+    </div>
+   
+
+
+
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
+

@@ -1,0 +1,26 @@
+.login-form-div{
+    background-color: rgba(255, 255, 255, 0.479);
+    border-radius: 10px;
+    width: 70%;
+    height: auto;
+    padding: 20px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form input{
+    padding: 5px;
+    margin: 5px;
+}
