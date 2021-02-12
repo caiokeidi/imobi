@@ -64,8 +64,15 @@ def busca(request):
     return render(request, 'imoveis/busca.html', dados)
 
 def cadastro_imoveis(request):
+    imovel = get_object_or_404(Imoveis, pk=1)
     if request.user.is_authenticated:
-        return render(request, 'imoveis/cadastro.html')   
+        if request.method=='POST':
+            imgs = request.FILES.getlist('imagens')
+            for img in imgs:
+                imagens.objects.create(foto=img, imoveis=imovel)
+            return render(request, 'imoveis/cadastro.html')  
+        else:
+            return render(request, 'imoveis/cadastro.html')   
     else:
         return redirect('login')
 
@@ -77,3 +84,10 @@ def cidade_bairro():
     
     return array_cb
 
+
+    #corretor = get_object_or_404(User, pk=request.user.id)
+    #cliente = request.POST['cliente']
+    #cidade = request.POST['cidade']
+    #bairro = request.POST['bairro']
+    #tipo_negocio = request.POST['tipo_negocio']
+    #tipo_imovel = request.POST['tipo_imovel']

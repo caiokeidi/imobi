@@ -10,7 +10,52 @@
         <div class="main_content_box">
             <h1> CADASTRO DE IMÓVEIS </h1>
             <div class="text_main_content_box">
-                <p>Cadastro de Imóveis</p>
+                <p>Cadastre o imovel desejado abaixo</p>
+                <form action='{% url "cadastro_imoveis" %}' method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input class='cadastro_input' type="text" name="cliente" placeholder="Nome do Cliente">
+                    <select class='cadastro_input' type="text" name="cidade" placeholder="Cidade">
+                        <option value="Mogi das Cruzes">Mogi das Cruzes</option>
+                        <option value="Suzano">Suzano</option>
+                        <option value="Guararema">Guararema</option>
+                        <option value="Biritiba Mirim">Biritiba Mirim</option>
+                        <option value="Arujá">Arujá</option>
+                    </select>
+                    <input class='cadastro_input' type="text" name="bairro" placeholder="Bairro">
+                    <input class='cadastro_input' type="text" name="rua" placeholder="Rua">
+                    <input class='cadastro_input' type="text" name="numero" placeholder="Número">
+                    <select class='cadastro_input' type="text" name="tipo_negocio">
+                        <option value="Aluguel">Aluguel</option>
+                        <option value="Compra">Compra</option>
+                    </select>
+                    <select class='cadastro_input' type="text" name="tipo_imovel">
+                        <option value="Casa / Padrão">Casa / Padrão</option>
+                        <option value="Casa / Condomínio">Casa / Condomínio</option>
+                        <option value="Chácara">Chácara</option>
+                        <option value="Apartamento">Apartamento</option>
+                        <option value="Kitnet">Kitnet</option>
+                    </select>
+                    <input class='cadastro_input' type="number" name="valor_aluguel" placeholder="Valor Aluguel">
+                    <input class='cadastro_input' type="number" name="valor_venda" placeholder="Valor Venda">
+                    <input class='cadastro_input' type="number" name="valor_iptu" placeholder="Valor IPTU">
+                    <input class='cadastro_input' type="number" name="valor_condominio" placeholder="Valor Condomínio">
+                    <input class='cadastro_input' type="number" name="area" placeholder="Área">
+                    <input class='cadastro_input' type="number" name="quartos" placeholder="Qtd. Quartos">
+                    <input class='cadastro_input' type="number" name="suites" placeholder="Qtd. Suítes">
+                    <input class='cadastro_input' type="number" name="banheiros" placeholder="Banheiros">
+                    <input class='cadastro_input' type="number" name="vagas" placeholder="Vagas de Garagem">
+                    <input class='cadastro_input' type="number" name="andar" placeholder="Andar">
+                    <input class='cadastro_input' type="checkbox" name="metro_proximo">
+                    <input class='cadastro_input' type="checkbox" name="mobiliado">
+                    <textarea class="cadastro_textarea" name="descricao"></textarea>
+                    <input class='cadastro_input' type="checkbox" name="publicado">
+
+                    <input type="file" name='imagens' accept="image/x-png,image/jpeg" multiple>
+
+                    <input class='cadastro_submit' type="submit" name="Cadastrar">
+
+
+                </form>
             </div>
         </div>
 

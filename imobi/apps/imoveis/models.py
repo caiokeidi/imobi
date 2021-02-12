@@ -32,7 +32,7 @@ class Imoveis(models.Model):
 
 class imagens(models.Model):
     imoveis = models.ForeignKey(Imoveis, on_delete=models.CASCADE)
-    models.ImageField(upload_to='fotos/%d/%m/%Y/', blank=True)
+    foto = models.ImageField(upload_to='fotos/%d/%m/%Y/', blank=True)
 
 
     
