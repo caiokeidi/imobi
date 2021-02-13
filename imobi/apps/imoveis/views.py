@@ -4,6 +4,10 @@ from django.contrib.auth.models import User
 from .models import Imoveis, imagens
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 import json
+from easy_thumbnails.files import get_thumbnailer
+from django.conf import settings
+
+
 
 def index(request):
     
@@ -23,9 +27,23 @@ def index(request):
 
 def imovel(request, imovel_id):
     imovel = get_object_or_404(Imoveis, pk=imovel_id)
+    imgs = imagens.objects.filter(imoveis=imovel_id)
+    imgs_and_thumbs = []
+    for i in imgs:
+        ###Precisei colocar o replace(media) pois por algum motivo ele estava dando media duplicado no url
+        element = {}
+        thumbnail = get_thumbnailer(settings.MEDIA_ROOT.replace('\media', '')+i.foto.url)['avatar']
+        element['thumb'] = thumbnail
+        element['img'] = i
+
+        imgs_and_thumbs.append(element)
+    
+    print(imgs_and_thumbs)
+
 
     imovel_a_exibir = {
-        'imovel': imovel
+        'imovel': imovel,
+        'imagens': imgs_and_thumbs
     }
 
     return render(request, 'imoveis/imovel.html', imovel_a_exibir)

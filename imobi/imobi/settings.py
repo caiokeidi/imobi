@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'apps.corretor',
     'apps.imobiliaria',
     'apps.imoveis',
+    'easy_thumbnails',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -122,3 +123,9 @@ STATICFILES_DIRS = [
 
 MEDIA_ROOT =  os.path.join(BASE_DIR, 'media') 
 MEDIA_URL = '/media/'
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (50, 50), 'crop': True},
+    },
+}
