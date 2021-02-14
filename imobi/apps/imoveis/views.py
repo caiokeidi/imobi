@@ -11,17 +11,30 @@ from django.conf import settings
 
 def index(request):
     
-    imoveis = Imoveis.objects.all().order_by("id") ##Precisei colocar parar parar o erro do pytest
+    imoveis_objects = Imoveis.objects.all().order_by("id") ##Precisei colocar parar parar o erro do pytest
+    imoveis = []
+    for obj in imoveis_objects:
+        imovel = {}
+        img = imagens.objects.filter(imoveis=obj).first()
+        
+        imovel['imovel'] = obj
+        imovel['img'] = img
+
+        imoveis.append(imovel)
+    
     cidade_bairro_JSON = json.dumps(cidade_bairro())
 
     paginator = Paginator(imoveis, 6)
     page = request.GET.get('page')
     imoveis_por_pagina = paginator.get_page(page)
 
+
+
     dados={
         'imoveis': imoveis_por_pagina,
         'cidade_bairro': cidade_bairro_JSON
     }
+
 
     return render(request, 'imoveis/index.html', dados)
 

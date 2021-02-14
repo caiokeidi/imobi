@@ -19,27 +19,32 @@
     <div class="casas_destaque">
         {% for imovel in imoveis %}
 
-            <a class="casa_destaque_link" href="/imovel/{{ imovel.id }}">
-                <div class="casa_destaque">
+        <a class="casa_destaque_link" href="/imovel/{{ imovel.imovel.id }}">
+            <div class="casa_destaque">
+                {% if imovel.img %}
+                    <img class='cd_linha casa_destaque_img' src="{{ imovel.img.foto.url }}">
+                {% else %}
                     <img class='cd_linha casa_destaque_img' src="{% static 'images/casa1.jpg' %}">
-                    <div class="cd_linha casa_destaque_bairro">{{ imovel.bairro }} - {{imovel.cidade}}</div>
-                    <div class="cd_linha casa_destaque_negocio">{{ imovel.tipo_negocio }}</div>
-                    <div class="cd_linha casa_destaque_caracteristicas">Quartos: {{ imovel.quartos }} - Banheiros: {{ imovel.banheiros }}</div>
-                    
-                    {% if imovel.tipo_negocio == 'Aluguel' %}
-                        <div class="valorAluguel cd_linha casa_destaque_valor">{{ imovel.valor_aluguel }}</div>
-                    {% else %}
-                        <div class="valorVendas cd_linha casa_destaque_valor">{{ imovel.valor_venda }}</div>
-                    {% endif %}
-              
-                    <div class="cd_linha btn_area">
-                        <a class="cd_linha casa_destaque_btn" href="/">
-                            Sobre
-                        <a>
-                    </div>
-                    
+                {% endif %}
+
+                <div class="cd_linha casa_destaque_bairro">{{ imovel.imovel.bairro }} - {{imovel.imovel.cidade}}</div>
+                <div class="cd_linha casa_destaque_negocio">{{ imovel.imovel.tipo_negocio }}</div>
+                <div class="cd_linha casa_destaque_caracteristicas">Quartos: {{ imovel.imovel.quartos }} - Banheiros: {{ imovel.imovel.banheiros }}</div>
+                
+                {% if imovel.imovel.tipo_negocio == 'Aluguel' %}
+                    <div class="valorAluguel cd_linha casa_destaque_valor">{{ imovel.imovel.valor_aluguel }}</div>
+                {% else %}
+                    <div class="valorVendas cd_linha casa_destaque_valor">{{ imovel.imovel.valor_venda }}</div>
+                {% endif %}
+          
+                <div class="cd_linha btn_area">
+                    <a class="cd_linha casa_destaque_btn" href="/">
+                        Sobre
+                    <a>
                 </div>
-            </a>
+                
+            </div>
+        </a>
 
         {% endfor %}
         
@@ -122,7 +127,7 @@
         }
 
     </script>
-    
+
     {% include 'partials/_footer.html' %}
     
 {% endblock %}
