@@ -14,7 +14,7 @@ def index(request):
     imoveis = Imoveis.objects.all().order_by("id") ##Precisei colocar parar parar o erro do pytest
     cidade_bairro_JSON = json.dumps(cidade_bairro())
 
-    paginator = Paginator(imoveis, 3)
+    paginator = Paginator(imoveis, 6)
     page = request.GET.get('page')
     imoveis_por_pagina = paginator.get_page(page)
 
@@ -139,6 +139,8 @@ def cadastro_imoveis(request):
             return render(request, 'imoveis/cadastro.html')   
     else:
         return redirect('login')
+
+
 
 def cidade_bairro():
     dict_cb_query = Imoveis.objects.values('bairro', 'cidade', 'tipo_negocio', 'tipo_imovel').annotate(dcount=Count('bairro'))

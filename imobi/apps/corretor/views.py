@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.contrib import auth
+from apps.imoveis.models import Imoveis
 
 def login(request):
     
@@ -41,3 +42,14 @@ def dashboard(request):
         return render(request, 'corretor/dashboard.html')
     else:
         return redirect('login')
+    
+
+
+def imoveis_corretor(request):
+    imoveis = Imoveis.objects.all().order_by("id").filter(corretor=request.user.id)
+
+    dados={
+        'imoveis': imoveis,
+    }
+
+    return render(request, 'corretor/imoveis_corretor.html', dados)
