@@ -10,94 +10,201 @@
         <div class="main_content_box">
             <h1> CADASTRO DE IMÓVEIS </h1>
             <div class="text_main_content_box">
-                <p>Cadastre o imovel desejado abaixo</p>
-                <form action='{% url "cadastro_imoveis" %}' method="POST" enctype="multipart/form-data">
+                <p style="text-indent: 0;">Cadastre o imóvel desejado abaixo</p>
+                <form action='{% url "cadastro_imoveis" %}' method="POST" enctype="multipart/form-data" class="form_cadastro">
                     {% csrf_token %}
-                    <label>Cliente:</label>
-                    <input class='cadastro_input' type="text" name="cliente" placeholder="Nome do Cliente" required>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Cliente:</label>
+                            <input class='cadastro_input_text' type="text" name="cliente" placeholder="Nome do Cliente" required>
+                        </div>
+                        
+                    </div>
 
-                    <label>Cidade:</label>
-                    <select class='cadastro_input' type="text" name="cidade" placeholder="Cidade" required>
-                        <option value="Mogi das Cruzes">Mogi das Cruzes</option>
-                        <option value="Suzano">Suzano</option>
-                        <option value="Guararema">Guararema</option>
-                        <option value="Biritiba Mirim">Biritiba Mirim</option>
-                        <option value="Arujá">Arujá</option>
-                    </select>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Cidade:</label>
+                            <select class='cadastro_input_text' type="text" name="cidade" placeholder="Cidade" required>
+                                <option value="Mogi das Cruzes">Mogi das Cruzes</option>
+                                <option value="Suzano">Suzano</option>
+                                <option value="Guararema">Guararema</option>
+                                <option value="Biritiba Mirim">Biritiba Mirim</option>
+                                <option value="Arujá">Arujá</option>
+                            </select>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Bairro:</label>
+                            <input class='cadastro_input_text' type="text" name="bairro" placeholder="Bairro" required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Rua:</label>
+                            <input class='cadastro_input_text' type="text" name="rua" placeholder="Rua" required>
+                        </div>
+                        
 
-                    <label>Bairro:</label>
-                    <input class='cadastro_input' type="text" name="bairro" placeholder="Bairro" required>
+                    </div>
 
-                    <label>Rua:</label>
-                    <input class='cadastro_input' type="text" name="rua" placeholder="Rua" required>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Número:</label>
+                            <input class='cadastro_input_number' type="text" name="numero" placeholder="Número" required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Complemento:</label>
+                            <input class='cadastro_input_text' type="text" name="complemento" placeholder="Complemento">
+                        </div>
+                    </div>
 
-                    <label>Número:</label>
-                    <input class='cadastro_input' type="text" name="numero" placeholder="Número" required>
+                    <hr>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Tipo de negócio:</label>
+                            <select class='cadastro_input_text' type="text" name="tipo_negocio" required>
+                                <option value="Aluguel">Aluguel</option>
+                                <option value="Compra">Compra</option>
+                            </select>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Tipo de imóvel:</label>
+                            <select class='cadastro_input_text' type="text" name="tipo_imovel" required>
+                                <option value="Casa / Padrão">Casa / Padrão</option>
+                                <option value="Casa / Condomínio">Casa / Condomínio</option>
+                                <option value="Chácara">Chácara</option>
+                                <option value="Apartamento">Apartamento</option>
+                                <option value="Kitnet">Kitnet</option>
+                            </select>
+                        </div>
+                        
+    
+                        
+                    </div>
 
-                    <label>Complemento:</label>
-                    <input class='cadastro_input' type="text" name="complemento" placeholder="Complemento">
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Valor Aluguel:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="number" name="valor_aluguel" placeholder="Valor Aluguel" value=0>    
+                            </div>
+                        </div>
 
-                    <label>Tipo de negócio:</label>
-                    <select class='cadastro_input' type="text" name="tipo_negocio" required>
-                        <option value="Aluguel">Aluguel</option>
-                        <option value="Compra">Compra</option>
-                    </select>
+                        
+                        <div class="form_cadastro_element">
+                            <label>Valor Venda:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="number" name="valor_venda" placeholder="Valor Venda" value=0>
+                            </div>
+                        </div>
+                        
+                        
+                        
+    
+                    </div>
+                        
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Valor IPTU:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="number" name="valor_iptu" placeholder="Valor IPTU" value=0>
+                            </div>
 
-                    <label>Tipo de imóvel:</label>
-                    <select class='cadastro_input' type="text" name="tipo_imovel" required>
-                        <option value="Casa / Padrão">Casa / Padrão</option>
-                        <option value="Casa / Condomínio">Casa / Condomínio</option>
-                        <option value="Chácara">Chácara</option>
-                        <option value="Apartamento">Apartamento</option>
-                        <option value="Kitnet">Kitnet</option>
-                    </select>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Valor Condomínio:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="number" name="valor_condominio" placeholder="Valor Condomínio" value=0>
+                            </div>
+                        </div>
+                    </div>
 
-                    <label>Valor Aluguel:</label>
-                    <input class='cadastro_input' type="number" name="valor_aluguel" placeholder="Valor Aluguel" value=0>
+                    <hr>
 
-                    <label>Valor Venda:</label>
-                    <input class='cadastro_input' type="number" name="valor_venda" placeholder="Valor Venda" value=0>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Área:</label>
+                            <div class="form_cadastro_inner_line">
+                                <input class='cadastro_input_number' type="number" name="area" placeholder="Área" required>
+                                <label>m²</label>
+                            </div>
+                            
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Quartos:</label>
+                            <input class='cadastro_input_number' type="number" name="quartos" placeholder="Qtd. Quartos" required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Suítes:</label>
+                            <input class='cadastro_input_number' type="number" name="suites" placeholder="Qtd. Suítes">
+                        </div>
 
-                    <label>Valor IPTU:</label>
-                    <input class='cadastro_input' type="number" name="valor_iptu" placeholder="Valor IPTU" value=0>
+                    </div>
 
-                    <label>Valor Condomínio:</label>
-                    <input class='cadastro_input' type="number" name="valor_condominio" placeholder="Valor Condomínio" value=0>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Banheiros:</label>
+                            <input class='cadastro_input_number' type="number" name="banheiros" placeholder="Banheiros" required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Vagas de Garagem:</label>
+                            <input class='cadastro_input_number' type="number" name="vagas" placeholder="Vagas de Garagem" value=0>
+                        </div>
+                
 
-                    <label>Área:</label>
-                    <input class='cadastro_input' type="number" name="area" placeholder="Área" required>
+                    </div>
 
-                    <label>Quartos:</label>
-                    <input class='cadastro_input' type="number" name="quartos" placeholder="Qtd. Quartos" required>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Andar: </label>
+                            <input class='cadastro_input_number' type="number" name="andar" placeholder="Andar" value=0>
+                        </div>
+                        <div class="form_cadastro_element_checkbox">
+                            <label>Possui metrô próximo: </label>
+                            <input class='cadastro_input_checkbox' type="checkbox" name="metro_proximo">
+        
+                        </div>
+                        <div class="form_cadastro_element_checkbox">
+                            <label>Mobiliado: </label>
+                            <input class='cadastro_input_checkbox' type="checkbox" name="mobiliado">
+                        </div>
+                    </div>
 
-                    <label>Suítes:</label>
-                    <input class='cadastro_input' type="number" name="suites" placeholder="Qtd. Suítes">
+                    <hr>
 
-                    <label>Banheiros:</label>
-                    <input class='cadastro_input' type="number" name="banheiros" placeholder="Banheiros" required>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Descrição: </label>
+                            <textarea class="cadastro_textarea" name="descricao"></textarea>
+                        </div>
+                        
+                    </div>
 
-                    <label>Vagas de Garagem:</label>
-                    <input class='cadastro_input' type="number" name="vagas" placeholder="Vagas de Garagem" value=0>
+                    
 
-                    <label>Andar:</label>
-                    <input class='cadastro_input' type="number" name="andar" placeholder="Andar" value=0>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Fotos:</label>
+                            <input type="file" name='imagens' accept="image/x-png,image/jpeg" multiple>
+                        </div>
+                        
+                    </div>
 
-                    <label>Possui metrô próximo:</label>
-                    <input class='cadastro_input' type="checkbox" name="metro_proximo">
+                    <hr>
+                    
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element_checkbox">
+                            <label>Publicar: </label>
+                            <input class='cadastro_input_checkbox' type="checkbox" name="publicado">
+                        </div>
+                        
+                    </div>
 
-                    <label>Mobiliado:</label>
-                    <input class='cadastro_input' type="checkbox" name="mobiliado">
-
-                    <label>Descrição:</label>
-                    <textarea class="cadastro_textarea" name="descricao"></textarea>
-
-                    <label>Publicar:</label>
-                    <input class='cadastro_input' type="checkbox" name="publicado">
-
-                    <label>Fotos:</label>
-                    <input type="file" name='imagens' accept="image/x-png,image/jpeg" multiple>
-
-                    <input class='cadastro_submit' type="submit" name="Cadastrar">
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <input class='cadastro_submit' type="submit" name="Cadastrar" value="Cadastrar">
+                    </div>
+                    
 
 
                 </form>
