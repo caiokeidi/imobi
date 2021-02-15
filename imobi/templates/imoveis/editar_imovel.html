@@ -1,0 +1,245 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% include 'partials/_menu.html' %}
+
+    <div class="main_content">
+
+        <div class="main_content_box">
+            <h1> EDITAR IMÓVEL</h1>
+            <h2>EDITAR AGORA PARA NÃO DEIXAR LETRAS EM CAMPOS DE VALOR, E USAR PARA VER SE 
+                TRABALHAR COM O CHECKBOX E TAMBÉM COM AS IMAGENS
+            </h2>
+            <div class="text_main_content_box">
+                <p style="text-indent: 0;">Edite o imóvel desejado abaixo</p>
+                <form action='/imovel/editar/{{ imovel.id }}' method="POST" enctype="multipart/form-data" class="form_cadastro">
+                    {% csrf_token %}
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Cliente:</label>
+                            <input class='cadastro_input_text' type="text" name="cliente" placeholder="Nome do Cliente" value={{imovel.cliente}} required>
+                        </div>
+                        
+                    </div>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Cidade:</label>
+                            <select class='cadastro_input_text' type="text" name="cidade" placeholder="Cidade" required>
+                                <option value="{{ imovel.cidade }}">{{imovel.cidade}}</option>
+                                <option value="Mogi das Cruzes">Mogi das Cruzes</option>
+                                <option value="Suzano">Suzano</option>
+                                <option value="Guararema">Guararema</option>
+                                <option value="Biritiba Mirim">Biritiba Mirim</option>
+                                <option value="Arujá">Arujá</option>
+                            </select>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Bairro:</label>
+                            <input id='cadastro_bairro' class='cadastro_input_text' type="text" name="bairro" placeholder="Bairro" value='{{imovel.bairro}}' required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Rua:</label>
+                            <input id='cadastro_rua' class='cadastro_input_text' type="text" name="rua" placeholder="Rua" value='{{imovel.rua}}' required>
+                        </div>
+                        
+
+                    </div>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Número:</label>
+                            <input class='cadastro_input_number' type="text" name="numero" placeholder="Número" value='{{imovel.numero}}' required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Complemento:</label>
+                            <input id='cadastro_complemento' class='cadastro_input_text' type="text" name="complemento" placeholder="Complemento" value='{{imovel.complemento}}'>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Tipo de negócio:</label>
+                            <select class='cadastro_input_text' type="text" name="tipo_negocio" value='{{imovel.tipo_negocio}}' required>
+                                <option value="Aluguel">Aluguel</option>
+                                <option value="Compra">Compra</option>
+                            </select>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Tipo de imóvel:</label>
+                            <select class='cadastro_input_text' type="text" name="tipo_imovel" value='{{imovel.imovel}}' required>
+                                <option value="{{ imovel.tipo_imovel }}">{{imovel.tipo_imovel}}</option>
+                                <option value="Casa / Padrão">Casa / Padrão</option>
+                                <option value="Casa / Condomínio">Casa / Condomínio</option>
+                                <option value="Chácara">Chácara</option>
+                                <option value="Apartamento">Apartamento</option>
+                                <option value="Kitnet">Kitnet</option>
+                            </select>
+                        </div>
+                        
+    
+                        
+                    </div>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Valor Aluguel:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="text" name="valor_aluguel" placeholder="Valor Aluguel" step="any" value='{{imovel.valor_aluguel}}'>    
+                            </div>
+                        </div>
+
+                        
+                        <div class="form_cadastro_element">
+                            <label>Valor Venda:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="text" name="valor_venda" placeholder="Valor Venda" value='{{imovel.valor_venda}}'>
+                            </div>
+                        </div>
+                        
+                        
+                        
+    
+                    </div>
+                        
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Valor IPTU:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="text" name="valor_iptu" placeholder="Valor IPTU" value='{{imovel.valor_iptu}}'>
+                            </div>
+
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Valor Condomínio:</label>
+                            <div class="form_cadastro_inner_line">
+                                <label>R$</label>
+                                <input class='cadastro_input_number' type="text" name="valor_condominio" placeholder="Valor Condomínio" value='{{imovel.valor_condominio}}'>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Área:</label>
+                            <div class="form_cadastro_inner_line">
+                                <input class='cadastro_input_number' type="number" name="area" placeholder="Área" value='{{imovel.area}}' required>
+                                <label>m²</label>
+                            </div>
+                            
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Quartos:</label>
+                            <input class='cadastro_input_number' type="number" name="quartos" placeholder="Qtd. Quartos" value='{{imovel.quartos}}' required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Suítes:</label>
+                            <input class='cadastro_input_number' type="number" name="suites" placeholder="Qtd. Suítes" value='{{imovel.suites}}'>
+                        </div>
+
+                    </div>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Banheiros:</label>
+                            <input class='cadastro_input_number' type="number" name="banheiros" placeholder="Banheiros" value='{{imovel.banheiros}}' required>
+                        </div>
+                        <div class="form_cadastro_element">
+                            <label>Vagas de Garagem:</label>
+                            <input class='cadastro_input_number' type="number" name="vagas" placeholder="Vagas de Garagem" value='{{imovel.vagas}}'>
+                        </div>
+                
+
+                    </div>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Andar: </label>
+                            <input class='cadastro_input_number' type="number" name="andar" placeholder="Andar" value='{{imovel.andar}}'>
+                        </div>
+                        <div class="form_cadastro_element_checkbox">
+                            <label>Possui metrô próximo: </label>
+                            <input class='cadastro_input_checkbox' type="checkbox" name="metro_proximo">
+        
+                        </div>
+                        <div class="form_cadastro_element_checkbox">
+                            <label>Mobiliado: </label>
+                            <input class='cadastro_input_checkbox' type="checkbox" name="mobiliado">
+                        </div>
+                    </div>
+
+                    <hr>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Descrição: </label>
+                            <textarea class="cadastro_textarea" name="descricao">{{imovel.descricao}}</textarea>
+                        </div>
+                        
+                    </div>
+
+                    
+
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element">
+                            <label>Fotos:</label>
+                            <input type="file" name='imagens' accept="image/x-png,image/jpeg" multiple>
+                        </div>
+                        
+                    </div>
+
+                    <hr>
+                    
+                    <div class="form_cadastro_row">
+                        <div class="form_cadastro_element_checkbox">
+                            <label>Publicar: </label>
+                            <input class='cadastro_input_checkbox' type="checkbox" name="publicado">
+                        </div>
+                        
+                    </div>
+
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <input class='cadastro_submit' type="submit" name="Cadastrar" value="Cadastrar">
+                    </div>
+                    
+
+
+                </form>
+            </div>
+        </div>
+
+    </div>
+   
+
+    <script>
+        input_number = document.getElementsByClassName('cadastro_input_number');
+        input_text = document.getElementsByClassName('cadastro_input_text');
+
+        Array.from(input_number).forEach(element => {
+            if(element.value=='None'){
+                element.value = 0
+            }
+        });
+
+        Array.from(input_text).forEach(element => {
+            if(element.value=='None'){
+                element.value = ''
+            }
+        });
+        
+    </script>
+
+
+    {% include 'partials/_footer.html' %}
+    
+{% endblock %}
+

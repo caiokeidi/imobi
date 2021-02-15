@@ -19,7 +19,7 @@
     <div class="casas_destaque">
         {% for imovel in imoveis %}
 
-        <a class="casa_destaque_link" href="/imovel/{{ imovel.imovel.id }}">
+        <a class="casa_destaque_link" href="/imovel/editar/{{ imovel.imovel.id }}">
             <div class="casa_destaque">
                 {% if imovel.img %}
                     <img class='cd_linha casa_destaque_img' src="{{ imovel.img.foto.url }}">
@@ -38,7 +38,7 @@
                 {% endif %}
           
                 <div class="cd_linha btn_area">
-                    <a class="cd_linha casa_destaque_btn" href="/">
+                    <a class="cd_linha casa_destaque_btn" href="/imovel/editar/{{ imovel.imovel.id }}">
                         Sobre
                     <a>
                 </div>
