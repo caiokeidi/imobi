@@ -9,8 +9,7 @@
 
         <div class="main_content_box">
             <h1> EDITAR IMÓVEL</h1>
-            <h2>EDITAR AGORA PARA NÃO DEIXAR LETRAS EM CAMPOS DE VALOR, E USAR PARA VER SE 
-                TRABALHAR COM O CHECKBOX E TAMBÉM COM AS IMAGENS
+            <h2>EDITAR AGORA PARA NÃO DEIXAR LETRAS EM CAMPOS DE VALOR, ver TAMBÉM COM AS IMAGENS
             </h2>
             <div class="text_main_content_box">
                 <p style="text-indent: 0;">Edite o imóvel desejado abaixo</p>
@@ -168,12 +167,21 @@
                         </div>
                         <div class="form_cadastro_element_checkbox">
                             <label>Possui metrô próximo: </label>
-                            <input class='cadastro_input_checkbox' type="checkbox" name="metro_proximo">
+                            {% if imovel.metro_proximo == True %}
+                                <input class='cadastro_input_checkbox' type="checkbox" name="metro_proximo" checked>
+                            {% else %}
+                                <input class='cadastro_input_checkbox' type="checkbox" name="metro_proximo">
+                            {% endif %}
         
                         </div>
                         <div class="form_cadastro_element_checkbox">
                             <label>Mobiliado: </label>
-                            <input class='cadastro_input_checkbox' type="checkbox" name="mobiliado">
+                            {% if imovel.mobiliado == True %}
+                                <input class='cadastro_input_checkbox' type="checkbox" name="mobiliado" checked>    
+                            {% else %}
+                                <input class='cadastro_input_checkbox' type="checkbox" name="mobiliado">
+                            {% endif %}
+                            
                         </div>
                     </div>
 
@@ -201,8 +209,13 @@
                     
                     <div class="form_cadastro_row">
                         <div class="form_cadastro_element_checkbox">
-                            <label>Publicar: </label>
-                            <input class='cadastro_input_checkbox' type="checkbox" name="publicado">
+                            <label>Publicado: </label>
+                            {% if imovel.publicado == True %}
+                                <input class='cadastro_input_checkbox' type="checkbox" name="publicado" checked>  
+                            {% else %}
+                                <input class='cadastro_input_checkbox' type="checkbox" name="publicado">
+                            {% endif %}
+                            
                         </div>
                         
                     </div>

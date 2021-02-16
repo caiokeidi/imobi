@@ -224,6 +224,7 @@ def editar_imovel(request, imovel_id):
 
             imgs_and_thumbs.append(element)
 
+        
         imovel_a_exibir = {
             'imovel': imovel,
             'imagens': imgs_and_thumbs
