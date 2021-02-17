@@ -89,7 +89,7 @@
                             <label>Valor Aluguel:</label>
                             <div class="form_cadastro_inner_line">
                                 <label>R$</label>
-                                <input class='cadastro_input_number' type="text" name="valor_aluguel" placeholder="Valor Aluguel" step="any" value='{{imovel.valor_aluguel}}'>    
+                                <input class='cadastro_input_number' onkeydown="checkIfNumber(this)" onkeyup="checkIfNumber(this)" type="text" name="valor_aluguel" placeholder="Valor Aluguel" step="any" value='{{imovel.valor_aluguel}}'>    
                             </div>
                         </div>
 
@@ -98,7 +98,7 @@
                             <label>Valor Venda:</label>
                             <div class="form_cadastro_inner_line">
                                 <label>R$</label>
-                                <input class='cadastro_input_number' type="text" name="valor_venda" placeholder="Valor Venda" value='{{imovel.valor_venda}}'>
+                                <input class='cadastro_input_number' onkeydown="checkIfNumber(this)" onkeyup="checkIfNumber(this)" type="text" name="valor_venda" placeholder="Valor Venda" value='{{imovel.valor_venda}}'>
                             </div>
                         </div>
                         
@@ -112,7 +112,7 @@
                             <label>Valor IPTU:</label>
                             <div class="form_cadastro_inner_line">
                                 <label>R$</label>
-                                <input class='cadastro_input_number' type="text" name="valor_iptu" placeholder="Valor IPTU" value='{{imovel.valor_iptu}}'>
+                                <input class='cadastro_input_number' onkeydown="checkIfNumber(this)" onkeyup="checkIfNumber(this)" type="text" name="valor_iptu" placeholder="Valor IPTU" value='{{imovel.valor_iptu}}'>
                             </div>
 
                         </div>
@@ -120,7 +120,7 @@
                             <label>Valor Condomínio:</label>
                             <div class="form_cadastro_inner_line">
                                 <label>R$</label>
-                                <input class='cadastro_input_number' type="text" name="valor_condominio" placeholder="Valor Condomínio" value='{{imovel.valor_condominio}}'>
+                                <input class='cadastro_input_number' onkeydown="checkIfNumber(this)" onkeyup="checkIfNumber(this)" type="text" name="valor_condominio" placeholder="Valor Condomínio" value='{{imovel.valor_condominio}}'>
                             </div>
                         </div>
                     </div>
@@ -241,6 +241,7 @@
             if(element.value=='None'){
                 element.value = 0
             }
+            
         });
 
         Array.from(input_text).forEach(element => {
@@ -248,6 +249,16 @@
                 element.value = ''
             }
         });
+
+        function checkIfNumber(element){
+            //Estamos tendo que chamar o evento duas vezes no keyUp e keyDown para atualizar o form.
+            if(element.value != ''){
+                if(!(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.'].includes(element.value.slice(-1)))){
+                    element.value = element.value.slice(0, -1)
+                    
+                }
+            }
+        }
         
     </script>
 
