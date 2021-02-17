@@ -62,6 +62,7 @@
                         <div class="form_cadastro_element">
                             <label>Tipo de negócio:</label>
                             <select class='cadastro_input_text' type="text" name="tipo_negocio" value='{{imovel.tipo_negocio}}' required>
+                                <option value="{{ imovel.tipo_negocio }}">{{imovel.tipo_negocio}}</option>
                                 <option value="Aluguel">Aluguel</option>
                                 <option value="Compra">Compra</option>
                             </select>
@@ -248,7 +249,7 @@
         input_text = document.getElementsByClassName('cadastro_input_text');
 
         Array.from(input_number).forEach(element => {
-            if(element.value=='None'){
+            if(element.value=='None' || element.value==''){
                 element.value = 0
             }
             
