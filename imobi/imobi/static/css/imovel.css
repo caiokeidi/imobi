@@ -177,6 +177,30 @@ hr{
     animation-fill-mode: both;
 }
 
+/* ########################### */
+/* ### EDITAR DE IMÓVEIS ### */
+/* ########################### */
+.form_editar_imgs{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+}
+
+.card_editar_img{
+    margin: 5px;
+}
+
+.btm_erase_img{
+    width: 100%;
+    background-color: red;
+    border-radius: 10px;
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+    
+}
 
 
 @media (max-width: 900px){

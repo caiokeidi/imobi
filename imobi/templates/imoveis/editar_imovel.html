@@ -9,8 +9,6 @@
 
         <div class="main_content_box">
             <h1> EDITAR IMÓVEL</h1>
-            <h2>EDITAR AGORA PARA NÃO DEIXAR LETRAS EM CAMPOS DE VALOR, ver TAMBÉM COM AS IMAGENS
-            </h2>
             <div class="text_main_content_box">
                 <p style="text-indent: 0;">Edite o imóvel desejado abaixo</p>
                 <form action='/imovel/editar/{{ imovel.id }}' method="POST" enctype="multipart/form-data" class="form_cadastro">
@@ -202,8 +200,20 @@
                             <label>Fotos:</label>
                             <input type="file" name='imagens' accept="image/x-png,image/jpeg" multiple>
                         </div>
-                        
                     </div>
+
+                    <div class="form_cadastro_row">
+                        <div class="form_editar_imgs">
+                            {% for img in imagens %}
+                                <div class="card_editar_img" data_id_img={{img.img.id}}>
+                                    <img src="{{ img.thumb.url }}">
+                                    <div class="btm_erase_img" id_img={{img.img.id}} url='{% url "apagar_img" img.img.id %}' onclick="ApagarFoto(this)">Apagar Foto</div>
+                                </div>
+                                
+                            {% endfor %}
+                        </div>
+                    </div>
+                    
 
                     <hr>
                     
@@ -232,7 +242,7 @@
 
     </div>
    
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
     <script>
         input_number = document.getElementsByClassName('cadastro_input_number');
         input_text = document.getElementsByClassName('cadastro_input_text');
@@ -255,10 +265,46 @@
             if(element.value != ''){
                 if(!(['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.'].includes(element.value.slice(-1)))){
                     element.value = element.value.slice(0, -1)
-                    
                 }
             }
         }
+
+        function getCookie(name) {
+            var cookieValue = null;
+            if (document.cookie && document.cookie != '') {
+                var cookies = document.cookie.split(';');
+                for (var i = 0; i < cookies.length; i++) {
+                    var cookie = cookies[i].trim();
+                    // Does this cookie string begin with the name we want?
+                    if (cookie.substring(0, name.length + 1) == (name + '=')) {
+                        cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                        break;
+                    }
+                }
+            }
+            return cookieValue;
+        }
+
+        function ApagarFoto(element){
+            let id = element.getAttribute('id_img')
+            let url = 'http://localhost:8000/imoveis/apagar/img/' 
+            let url2 = element.getAttribute('url')
+            let csrf = getCookie('csrftoken');
+
+            data = {
+                'csrfmiddlewaretoken':csrf,
+                'id':id
+            }
+
+            jQuery.post(url2, data, () => {
+                console.log('success')
+            }, 'text')
+            
+            $(element).parent().hide()
+            
+            
+        }
+
         
     </script>
 

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect
+from django.shortcuts import render, get_list_or_404, get_object_or_404, redirect, HttpResponse
 from django.db.models import Count
 from django.contrib.auth.models import User
 from .models import Imoveis, imagens
@@ -156,60 +156,62 @@ def cadastro_imoveis(request):
 def editar_imovel(request, imovel_id):
 
     if request.method=='POST':
+        i = get_object_or_404(Imoveis, pk=imovel_id)
+
         v_aluguel = request.POST['valor_aluguel']
         v_venda = request.POST['valor_venda']
         v_iptu = request.POST['valor_iptu']
         v_condominio = request.POST['valor_condominio']
 
-        corretor = get_object_or_404(User, pk=request.user.id)
-        cliente = request.POST['cliente']
-        cidade = request.POST['cidade']
-        bairro = request.POST['bairro']
-        rua = request.POST['rua']
-        numero = request.POST['numero']
-        complemento = request.POST['complemento']
-        tipo_negocio = request.POST['tipo_negocio']
-        tipo_imovel = request.POST['tipo_imovel']
-        valor_aluguel = float(v_aluguel.replace(',', '.'))
-        valor_venda = float(v_venda.replace(',', '.'))
-        valor_iptu = float(v_iptu.replace(',', '.'))
-        valor_condominio = float(v_condominio.replace(',', '.'))
-        area = request.POST['area']
-        quartos = request.POST['quartos']
-        suites = request.POST['suites']
-        banheiros = request.POST['banheiros']
-        vagas = request.POST['vagas']
-        andar = request.POST['andar']
+        i.corretor = get_object_or_404(User, pk=request.user.id)
+        i.cliente = request.POST['cliente']
+        i.cidade = request.POST['cidade']
+        i.bairro = request.POST['bairro']
+        i.rua = request.POST['rua']
+        i.numero = request.POST['numero']
+        i.complemento = request.POST['complemento']
+        i.tipo_negocio = request.POST['tipo_negocio']
+        i.tipo_imovel = request.POST['tipo_imovel']
+        i.valor_aluguel = float(v_aluguel.replace(',', '.'))
+        i.valor_venda = float(v_venda.replace(',', '.'))
+        i.valor_iptu = float(v_iptu.replace(',', '.'))
+        i.valor_condominio = float(v_condominio.replace(',', '.'))
+        i.area = request.POST['area']
+        i.quartos = request.POST['quartos']
+        i.suites = request.POST['suites']
+        i.banheiros = request.POST['banheiros']
+        i.vagas = request.POST['vagas']
+        i.andar = request.POST['andar']
 
-        metro_proximo = False
+        i.metro_proximo = False
         if 'metro_proximo' in request.POST:
-            metro_proximo = True
+            i.metro_proximo = True
 
-        mobiliado = False
+        i.mobiliado = False
         if 'mobiliado' in request.POST:
-            mobiliado = True
+            i.mobiliado = True
 
         descricao = request.POST['descricao']
 
-        publicado = False
+        i.publicado = False
         if 'publicado' in request.POST:
-            publicado = True
+            i.publicado = True
 
 
-        imovel=Imoveis.objects.create(corretor=corretor, cliente=cliente, cidade=cidade, bairro=bairro, rua=rua,
-        numero=numero, complemento=complemento, tipo_negocio=tipo_negocio, tipo_imovel=tipo_imovel, valor_aluguel=valor_aluguel,
-        valor_venda=valor_venda, valor_iptu=valor_iptu, valor_condominio=valor_condominio, area=area, quartos=quartos,
-        suites=suites, banheiros=banheiros, vagas=vagas, andar=andar, metro_proximo=metro_proximo, mobiliado=mobiliado,
-        descricao=descricao, publicado=publicado)
+        #imovel=Imoveis.objects.create(corretor=corretor, cliente=cliente, cidade=cidade, bairro=bairro, rua=rua,
+        #numero=numero, complemento=complemento, tipo_negocio=tipo_negocio, tipo_imovel=tipo_imovel, valor_aluguel=valor_aluguel,
+        #valor_venda=valor_venda, valor_iptu=valor_iptu, valor_condominio=valor_condominio, area=area, quartos=quartos,
+        #suites=suites, banheiros=banheiros, vagas=vagas, andar=andar, metro_proximo=metro_proximo, mobiliado=mobiliado,
+        #descricao=descricao, publicado=publicado)
 
-        #imovel.save()
+        i.save()
         
-        #imgs = request.FILES.getlist('imagens')
-        #for img in imgs:
-            #imagens.objects.create(foto=img, imoveis=imovel)
+        imgs = request.FILES.getlist('imagens')
+        for img in imgs:
+            imagens.objects.create(foto=img, imoveis=i)
         
 
-        return render(request, 'imoveis/cadastro.html')    
+        return redirect('imoveis_corretor')
 
     else:
         imovel = get_object_or_404(Imoveis, pk=imovel_id)
@@ -231,6 +233,16 @@ def editar_imovel(request, imovel_id):
         }
 
         return render(request, 'imoveis/editar_imovel.html', imovel_a_exibir)
+
+def apagar_img(request, img_id):
+    if request.user.is_authenticated:
+        img = imagens.objects.filter(id=img_id)
+
+        img.delete()
+
+        return HttpResponse(request, 'Success')
+    
+    return HttpResponse(request, 'Fail')
 
 
 def cidade_bairro():
